@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+img{
+transition: 0.5s;  
+}
+
+img:hover{  
+  transition: 0.5s;
+  width: 75%;
+  transform: translateY(-15px) translateX(-5px);
+  box-shadow: 0px 5px 5px black;
+}

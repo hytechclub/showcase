@@ -1,0 +1,45 @@
+#subtitle {
+  font-style: italic;
+}
+
+
+.jumbotron {
+  background-color: navy;
+  color: red;
+font-family: serif;
+}
+
+#lbj-header:hover {
+  transform: rotate(360deg);
+  transition-duration: 1s;
+}
+
+p {
+font-size: 20px; 
+}
+
+.btn {
+  background-color: whitesmoke;
+  color: maroon;
+}
+
+p {
+color: gray;
+font-family: serif;
+}
+
+li{
+color: blue;
+font-family: serif;
+}
+
+h2{
+color: maroon;
+font-family: serif;
+}
+
+.pres-img {
+width:230px;
+}
+
+

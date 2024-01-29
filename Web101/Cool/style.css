@@ -1,0 +1,196 @@
+body {
+  background-image: url(https://thumbs.dreamstime.com/z/fire-background-11522573.jpg);
+}
+
+.jumbotron {
+  background-image: url(https://blog.flamingtext.com/blog/2022/05/17/flamingtext_com_1652810563_504191098.png);
+}
+
+#subscribe {
+  background-color: #000000;
+  cursor: pointer;
+  transition: 0.5s
+}
+
+#subscribe:hover {
+  box-shadow: 3px 5px 5px black;
+  transition: 0.5s;
+}
+
+#subscribe:active {
+  background-color: #dbaa66;
+  transition: 0.15s;
+}
+
+#info {
+  background-color: #292929;
+  transition: 0.5s;
+  box-shadow: 1px 1px 1px black;
+  padding: 10px;
+  text-align: center;
+}
+
+#info:active {
+  transform: rotate(360deg);
+  transition: 0.5s; 
+  transition: all 0.3s ease-in-out 0s;
+}
+
+#center {
+  text-align: center;
+  padding-top: 50px;
+}
+
+img {
+  size: 700px;
+  width: 700px;
+  border: solid black;
+}
+
+.footer {   
+  text-align: left;    
+  bottom: 0px; 
+  width: 100%;
+  font-size: 40px;
+  font-family: Impact, Charcoal, sans-serif;
+  color: white;
+  position:absolute; TOP:400px; LEFT:950px; WIDTH:2000px; HEIGHT:600px;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+   } 
+
+.logo {
+  height: 100px;
+  width: 175px;
+}
+
+#bruh {
+  background-color: black;
+}
+
+.bettertext {
+  font-size: 100px;
+}
+
+.abandon {
+  filter: blur(4px);
+}
+
+.catcat {
+  padding-top: 100px;
+  text-align: center;
+  z-index: 100px;
+}
+
+#insane {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: darkred;
+  font-size: 100px;
+  text-shadow: 10px 10px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+}
+
+.white {
+  color: white;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.noborder {
+  border: 0;
+}
+
+.ugly1 {
+  position:absolute;
+  TOP:320px; 
+  LEFT:325px;
+  WIDTH:2000px; 
+  HEIGHT:600px
+}
+
+#here {
+  font-size: 50px;
+  transition: 0.25s;
+}
+
+#here:hover {
+  color: orangered;
+  
+}
+
+.skittle {
+ font-family: Impact, Charcoal, sans-serif;
+  color: white;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.secondyay {
+  font-size: 50px;
+  transition: 0.25s;
+}
+
+.secondyay:hover {
+  color: orangered;
+}
+
+#second {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: seagreen;
+  font-size: 100px;
+  text-shadow: 10px 10px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+}

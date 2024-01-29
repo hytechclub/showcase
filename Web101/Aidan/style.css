@@ -1,0 +1,43 @@
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  font-family: cursive;
+}
+
+.jumbotron {
+  background-color: #131921;
+  height: 10;
+}
+
+.serchbar {
+  text-align: center;
+}
+#kitkat {
+  height: 200px;
+}
+
+.logo {
+  text-align: left;
+}
+.star {
+  width: 200px;
+}
+.oreo {
+  width: 200px;
+}
+.sprite {
+  text-align: center;
+}
+
+ol#horizontal-list {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+}
+ol#horizontal-list li {
+	display: inline;
+}
+body {
+  background-color: lightgrey;
+}

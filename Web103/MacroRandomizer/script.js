@@ -69,11 +69,11 @@ let getStoicQuote = async () => {
 
   try {
     // Make the request
-    let response = await fetch(`https://api.themotivate365.com/stoic-quote`);
+    let response = await fetch(`https://stoic-quotes.com/api/quote`);
     let responseJson = await response.json();
 
     // Get the quote text
-    text = responseJson.quote;
+    text = responseJson.text;
   } catch (e) {
     throw `Error getting stoic quote: ${e.message}`;
   }

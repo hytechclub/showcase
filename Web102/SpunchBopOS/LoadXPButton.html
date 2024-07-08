@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+  html, body{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    color:white;
+  }
+  .btn{
+    background:white;
+    transition: 0s;
+  }
+  .btn:hover{
+    background: darkgray;
+    transition: 0s;
+  }
+  .btn:active{
+    background: gray;
+    transition: 0s;
+  }
+  #wrapper{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+</style>    
+</head>
+
+<body>
+  <div id="wrapper">
+<button class="btn" onclick="createBar()" style="vertical-align: middle; color:black;">Load Windows XP</button>
+    <!--<h2>Loading</h2>
+    <div style="border: 2px solid white; width:250px; height:25px;">
+      <div id="bar" style="background-color:white; height:100%;"></div>
+    </div>-->
+    </div>
+  <script>
+    
+    let width = 0;
+    function createBar()
+      {
+        const wrapperParent = document.querySelector("#wrapper");
+        let h2 = document.createElement("h2");
+        h2.textContent = "Loading 0%";
+        wrapperParent.appendChild(h2);
+        let border = document.createElement("div");
+        border.setAttribute("style", "border: 2px solid white; width:500px; height:25px;");
+        wrapperParent.appendChild(border);
+        let bar = document.createElement("div");
+        bar.setAttribute("id", "bar");
+        bar.setAttribute("style", "background-color:white; height:100%;");
+        bar.style.width = "0px";
+        border.appendChild(bar);
+        document.querySelector(".btn").remove();
+        setTimeout(progressBar,500);
+      }
+    function progressBar()
+      {
+        //console.log(document.querySelector("#bar").style.width);
+        let ranNum = Math.random()*5;
+        width += ranNum;
+        width = Math.min(width, 100);
+        document.querySelector("h2").textContent = "Loading " + Math.floor(width) + "%";
+        let bar = document.querySelector("#bar");
+        bar.style.width = width.toString()+"%";//(Math.random()*30);
+        //bar.style.transition = "0.15s linear";
+        if (width < 100)
+        {
+        setTimeout(progressBar, Math.random()*45*ranNum)
+        }
+        else
+        {
+          window.location.replace("WindowsBootPreRecover.html");
+        }
+      }
+  </script>
+</body>
+
+</html>

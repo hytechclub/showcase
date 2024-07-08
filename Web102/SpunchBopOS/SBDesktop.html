@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <title>replit</title>
+  <link href="WallpaperStyle.css" rel="stylesheet" type="text/css" />
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <link rel="preload" as="image" href="DoodleWalk.gif">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+  <style>
+    @font-face { font-family: spongeboy; src: url('Spongeboytt1-0n1v.ttf'); }
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      overflow: hidden;
+      font-family: spongeboy;
+      font-size:11px;
+    }
+    #background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    iframe{
+      width: 100%;
+      height: calc(100% - 42px);
+     border: 1px solid #ccc;
+     border-radius:70px solid transparent;
+      
+    }
+    #resizable{
+      border: 50px solid transparent;
+       border-image:url(BubbleWindow.png) 37.5 stretch;
+      min-width: 320px;
+      min-height: 240px;
+    }
+    #shortcut{
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+    #shortcut:hover{
+      background: rgba(0,128,255,0.2);
+    }
+    #okButton{
+      background:#FFFFF0;
+      transition: 0s;
+    }
+    #okButton:hover{
+      background:#EEEEE0;
+      transition: 0s;
+    }
+    #okButton:active{
+      background:#BBBBB0;
+      transition: 0s;
+    }
+
+    #startbutton{
+      filter: brightness(100%);
+      transition: 0s;
+    }
+    #startbutton:hover{
+      filter: brightness(112%);
+      transition: 0s;
+    }
+    #startbutton:active{
+      filter: brightness(75%);
+      transition: 0s;
+    }
+    .btn{
+      filter: brightness(100%);
+      transition: 0s;
+      cursor:pointer;
+    }
+    .btn:hover{
+      filter: brightness(112%);
+      transition: 0s;
+    }
+    .btn:active{
+      filter: brightness(75%);
+      transition: 0s;
+    }
+    #doodlePet {
+        position: absolute;
+        height: 100px;
+        transition: left 0.5s linear, top 0.5s linear; /* Adding transition for smooth movement */
+      transform: scale(1, 1);
+    }
+    .option{
+      background: white;
+    }
+    .option:hover{
+      background: lightcyan;
+    }
+    
+
+  </style>
+  <img id="background-image" src="Wallpaper.jpg" alt="background image" onmousemove="getCursor(event)">
+  <script>  
+     $(function() {  
+        $( "#resizable" ).resizable();  
+  $( "#resizable" ).draggable({ containment: "body" });  
+     });  
+  </script>
+  <script>
+    let switchSound = new Audio("WindowsXPLogInSoundEffect.wav");
+    var css = 'body :not(.areYouSureDialog){ filter:grayScale(00%); }';
+    document.styleSheets[0].insertRule('body :not(.areYouSureDialog){ filter:grayScale(0%); transition:0s;}', 0);
+    function grayscale()
+      {
+        document.styleSheets[0].cssRules[0].style.transition="5s";
+document.styleSheets[0].cssRules[0].style.filter="grayScale(100%)";
+      }
+    function colored()
+      {
+        document.styleSheets[0].cssRules[0].style.transition="0s";
+        document.styleSheets[0].cssRules[0].style.filter="grayScale(0%)";
+      }
+const variables = {};
+window.location.search.substr(1).split("&").forEach(function(variable) {
+      const temp = variable.split("=");
+      variables[temp[0]] = temp[1];
+    });
+    if(variables["playSwitchAudio"] == "true")
+    {
+      switchSound.play();
+    }
+    /*var theStyle = document.createElement('style');
+
+    if (theStyle.styleSheet) {
+        theStyle.styleSheet.cssText = css;
+    } else {
+        theStyle.appendChild(document.createTextNode(css));
+    }
+
+    document.getElementsByTagName('body')[0].appendChild(theStyle);*/
+
+  </script>
+</head>
+<body onmousemove="getCursor(event)">
+  <div id="winApp"></div>
+  <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+  <!--<img id="doodlePet" style="z-index:500; position:absolute; height:100px;" draggable="false" src="DoodleBob.webp" action="wander"></img>-->
+ 
+  <script>
+    let eraseAudio = new Audio("Erase.wav");
+    const speak = () => {
+      let doodleSpeak = new Audio("DoodleTalk" + (Math.round(Math.random()) + 1) + ".wav");
+      if (document.getElementById("doodlePet"))
+      {
+      if (Math.random() < 0.15)
+      {
+      doodleSpeak.play();
+      }
+      setTimeout(speak, 15000+Math.random()*15000);
+      }
+    }
+    function clearAll()
+      {
+    const highestId = window.setTimeout(() => {
+      for (let i = highestId; i >= 0; i--) {
+        window.clearInterval(i);
+      }
+      speak();
+    }, 0);
+      }
+    let cursorX;
+    let cursorY;
+    function getCursor(event) {
+    cursorX = event.clientX;
+    cursorY = event.clientY;
+    }
+    const wanderAround = () => {
+        clearAll();
+        doodlePet.setAttribute("src", "DoodleWalk.gif");
+        console.log("Move")
+        if (doodlePet.getAttribute("action") == "follow")
+        {
+          followCursor();
+        }
+        if (doodlePet.getAttribute("action") == "sit")
+        {
+          doodlePet.setAttribute("src", "DoodleBob.webp");
+          clearAll();
+        }
+          let currentX = doodlePet.offsetLeft;
+          let currentY = doodlePet.offsetTop;
+          const randomX = Math.floor(Math.random() * (screenWidth - 100));
+          const randomY = Math.floor(Math.random() * (screenHeight - 100));
+
+          let distance = Math.sqrt((randomX - currentX) ** 2 + (randomY - currentY) ** 2);
+
+          if (randomX - currentX > 0)
+          {
+            doodlePet.style.transform = "scale(-1, 1)";
+          }
+          else
+          {
+            doodlePet.style.transform = "scale(1, 1)";
+          }
+          doodlePet.style.transition = "left "+(distance/speed).toString()+"s linear, top "+(distance/speed).toString()+"s linear";
+          doodlePet.style.left = `${randomX}px`;
+          doodlePet.style.top = `${randomY}px`;
+          console.log((distance/speed))
+        setTimeout(() => {
+          doodlePet.setAttribute("src", "DoodleBob.webp");
+        }, (distance/speed)*1000);
+        if (doodlePet.getAttribute("action") == "wander" && document.getElementById("doodlePet"))
+
+        {
+          setTimeout(() => {
+            if (Math.random() > 0.15)
+            { 
+              wanderAround();
+            }
+            else
+            {
+              if (Math.random() > 0.5 || !iframeExists("Notepad.html"))
+              {
+                targetNotepadWindow();
+              }
+              else
+              {
+                targetNotepadAppByRandom();
+              }
+            }
+          }, (distance/speed)*1000+(Math.random()*10000));
+        }
+      }
+      const targetNotepadWindow = () => {
+        doodlePet.setAttribute("src", "DoodleWalk.gif");
+        clearAll();
+          let currentX = doodlePet.offsetLeft;
+          let currentY = doodlePet.offsetTop;
+          const targetX = 0;
+          const targetY = 190;
+
+          let distance = Math.sqrt((targetX - currentX) ** 2 + (targetY - currentY) ** 2);
+
+          if (targetX - currentX > 0)
+          {
+            doodlePet.style.transform = "scale(-1, 1)";
+          }
+          else
+          {
+            doodlePet.style.transform = "scale(1, 1)";
+          }
+          doodlePet.style.transition = "left "+(distance/speed).toString()+"s linear, top "+(distance/speed).toString()+"s linear";
+          doodlePet.style.left = `${targetX}px`;
+          doodlePet.style.top = `${targetY}px`;
+          console.log((distance/speed))
+          setTimeout(() => {
+              openWindow("NotepadDoodle", -1);
+            targetNotepadApp();
+          }, (distance/speed)*1000);
+      }
+
+      const followCursor = () => {
+        if (doodlePet.getAttribute("src") != "DoodleWalk.gif")
+        {
+        doodlePet.setAttribute("src", "DoodleWalk.gif");
+        }
+        clearAll();
+        if (doodlePet.getAttribute("action") == "wander")
+        {
+          wanderAround();
+        }
+        if (doodlePet.getAttribute("action") == "sit")
+        {
+          doodlePet.setAttribute("src", "DoodleBob.webp");
+            clearAll(followCursor);
+        }
+        let currentX = doodlePet.offsetLeft;
+        let currentY = doodlePet.offsetTop;
+        const targetX = cursorX;
+        const targetY = cursorY;
+        console.log
+        let distance = Math.sqrt((targetX - currentX) ** 2 + (targetY - currentY) ** 2);
+
+        if (targetX - currentX > 0)
+        {
+          doodlePet.style.transform = "scale(-1, 1)";
+        }
+        else
+        {
+          doodlePet.style.transform = "scale(1, 1)";
+        }
+        doodlePet.style.transition = "left "+(distance/speed).toString()+"s linear, top "+(distance/speed).toString()+"s linear";
+        doodlePet.style.left = `${targetX}px`;
+        doodlePet.style.top = `${targetY}px`;
+        console.log((distance/speed))
+        if (doodlePet.getAttribute("action") == "follow")
+        {
+        setTimeout(() => {
+          followCursor();
+        }, 120);
+        }
+      }
+
+      const targetNotepadApp = () => {
+          doodlePet.setAttribute("src", "DoodleWalk.gif");
+          let currentX = doodlePet.offsetLeft;
+          let currentY = doodlePet.offsetTop;
+          let selectedframe = null;
+        var iframes = document.getElementsByTagName('iframe');
+
+        for (var i = iframes.length - 1; i >= 0; i--) {
+            if (iframes[i].getAttribute('src') === 'Notepad.html') {
+                // Found the last iframe with the desired src attribute
+                  selectedframe = iframes[i];
+                break;
+            }
+        }
+
+          const targetX = selectedframe.parentElement.offsetLeft+100;
+          const targetY = selectedframe.parentElement.offsetTop + 100;
+
+          let distance = Math.sqrt((targetX - currentX) ** 2 + (targetY - currentY) ** 2);
+
+          if (targetX - currentX > 0)
+          {
+            doodlePet.style.transform = "scale(-1, 1)";
+          }
+          else
+          {
+            doodlePet.style.transform = "scale(1, 1)";
+          }
+          doodlePet.style.transition = "left "+(distance/speed).toString()+"s linear, top "+(distance/speed).toString()+"s linear";
+          doodlePet.style.left = `${targetX}px`;
+          doodlePet.style.top = `${targetY}px`;
+          console.log((distance/speed))
+          setTimeout(() => {
+    selectedframe.contentWindow.vandalizePad();
+          wanderAround();
+          }, (distance/speed)*1000);
+      }
+
+      const targetNotepadAppByRandom = () => {
+        doodlePet.setAttribute("src", "DoodleWalk.gif");
+            let currentX = doodlePet.offsetLeft;
+            let currentY = doodlePet.offsetTop;
+            let selectedframe = getRandomIframe("Notepad.html");
+
+            const targetX = selectedframe.parentElement.offsetLeft+100;
+            const targetY = selectedframe.parentElement.offsetTop + 100;
+
+            let distance = Math.sqrt((targetX - currentX) ** 2 + (targetY - currentY) ** 2);
+
+            if (targetX - currentX > 0)
+            {
+              doodlePet.style.transform = "scale(-1, 1)";
+            }
+            else
+            {
+              doodlePet.style.transform = "scale(1, 1)";
+            }
+            doodlePet.style.transition = "left "+(distance/speed).toString()+"s linear, top "+(distance/speed).toString()+"s linear";
+            doodlePet.style.left = `${targetX}px`;
+            doodlePet.style.top = `${targetY}px`;
+            console.log((distance/speed))
+            setTimeout(() => {
+      selectedframe.contentWindow.vandalizePad();
+            wanderAround();
+            }, (distance/speed)*1000);
+        }
+
+      function iframeExists(src) {
+          var iframes = document.getElementsByTagName('iframe');
+          for (var i = 0; i < iframes.length; i++) {
+              if (iframes[i].getAttribute('src') === src) {
+                  return true; // Found iframe with specified src
+              }
+          }
+          return false; // Did not find iframe with specified src
+      }
+      function getRandomIframe(src) {
+          var iframes = document.getElementsByTagName('iframe');
+          var matchingIframes = [];
+
+          // Collect all iframes with the specified src
+          for (var i = 0; i < iframes.length; i++) {
+              if (iframes[i].getAttribute('src') === src) {
+                  matchingIframes.push(iframes[i]);
+              }
+          }
+
+          // If no iframes found with the specified src, return null
+          if (matchingIframes.length === 0) {
+              return null;
+          }
+
+          // Select a random iframe from the matching iframes array
+          var randomIndex = Math.floor(Math.random() * matchingIframes.length);
+          return matchingIframes[randomIndex];
+      }
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    let speed = 300;
+    function initDoodle()
+      {
+   
+    let notepadTarget = null;
+    let doodlePet = document.getElementById("doodlePet");
+    doodlePet.oncontextmenu = function() {
+      
+      document.getElementById("optionMenu").style.left = cursorX + "px";
+      document.getElementById("optionMenu").style.top = cursorY + "px";
+      document.getElementById("optionMenu").style.display = "block";
+      return false;
+    }
+
+    
+
+    
+    
+    wanderAround();
+    speak();
+      }
+  </script>
+<script>
+  window.addEventListener('message', function(event) {
+      // Check if the message is from an allowed origin (optional)
+      // You can replace '*' with the actual origin of the iframe if you want to restrict communication
+      //if (event.origin === 'Notepad.html') {
+          // Check if the message is to change the background color
+          if (event.data === 'sendDoodle') {
+            if (document.getElementById("doodlePet"))
+            {
+              alert("You can only have one pet on your desktop in this free demo. Buy the full pack at doodles4desktops.com to have more kinds of pets and to increase the maximum amount on your computer.");
+            }
+            else
+            {
+            alert(`MESSAGE FROM DOODLES4DESKTOPS
+            Say hello to your new pet. His name is DoodleBob. He is a mischevious little doodle that likes to pull up a notepad and draw whatever he pleases. Sometimes, he will go to existing notepads and replace them with his own drawings, so make sure to save your work before he draws all over it. You can make him wander around, follow you, or sit down by right clicking on him. If you don't want him anymore, click the erase button, but we doubt that you will ever do that. Enjoy your desktop pet and rate us 5 stars on doodles4desktops.com`)
+              let doodle = document.createElement("img");
+              doodle.setAttribute("id", "doodlePet");
+              doodle.setAttribute("src", "DoodleBob.webp");
+              doodle.setAttribute("action", "wander");
+              doodle.setAttribute("style", "z-index:500; position:absolute; height:100px;");
+            doodle.setAttribute("draggable", "false");
+            doodlePet = doodle;
+            document.body.appendChild(doodle);
+            initDoodle();
+            }
+          }
+      //}
+  });
+  
+
+</script>
+  
+
+  <div id="optionMenu" style="display:none; position:absolute; left:0px; top:0px; z-index: 5000;">
+  <div class="option" style="width:100px; height:15px; user-select:none;" onclick='document.getElementById("doodlePet").setAttribute("action", "wander"); clearAll(); wanderAround(); parentElement.style.display = "none";'>Wander</div>
+  <div class="option" style="width:100px; height:15px; user-select:none; " onclick='document.getElementById("doodlePet").setAttribute("action", "follow"); clearAll(); followCursor();parentElement.style.display = "none";'>Follow</div>
+  <div class="option" style="width:100px; height:15px; user-select:none;" onclick='document.getElementById("doodlePet").setAttribute("action", "sit"); parentElement.style.display = "none";'>Sit</div>
+  <div class="option" style="width:100px; height:15px; user-select:none;" onclick='document.getElementById("doodlePet").remove(); clearAll(); parentElement.style.display = "none"; eraseAudio.play()'>Erase</div>
+    </div>
+  <div class="areYouSureDialog" id="LogOffConfirm" style="z-index:90; position:absolute; display:none; border:2px solid black; left: calc(50% - 157px); top: calc(50% - 100px); width: 314px; height:200px;">
+    <div class="areYouSureDialog" id="background" style="position: absolute;">
+    <div class="areYouSureDialog" style="background:#00349A; width:314px; height:47px;">
+    </div>
+    <div class="areYouSureDialog" style="background:linear-gradient(90deg, #3E63BC, #D4E3F8 40%, #D4E3F8 60%, #3E63BC); width:314px; height:3px;">
+      </div>
+    <div class="areYouSureDialog" style="background:linear-gradient(90deg, #5A7CDE, #99B7F7 60%, #99B7F7 70%, #6A89E3 100%); width:314px; height:103px;">
+      </div>
+    <div class="areYouSureDialog" style="background:#00349A; width:314px; height:47px;">
+      </div>
+    </div>
+
+    <h2 class="areYouSureDialog" style="position:absolute; color:white; margin-left:5px; ">Log off XP</h2>
+    <img class="btn areYouSureDialog" style="position:absolute; left: calc(30% - 16px); top:calc(50% - 19px); width:32px; height:32px;" src="SwitchUserIcon.png" onclick="window.location.href = 'LogIn.html?howEnter=switchUser';" draggable=false>
+    <p style="position:absolute; left: calc(30% - 42px); top:calc(50% + 5px); color:white;" >Switch User</p></img>
+    <img class="btn areYouSureDialog" style="position:absolute; left: calc(70% - 17.5px); top:calc(50% - 19px); width:32px; height:32px;" src="Logout.png" onclick='window.location.href="ShutdownScreen.html?action=logoff"' draggable=false>
+    <p style="position:absolute; left: calc(70% - 26px); top:calc(50% + 5px); color:white;" >Log Off</p></img>
+    <button class="areYouSureDialog" style="position:absolute; width:75px; right:12.5px; bottom:12.5px;" onclick='document.querySelector("#LogOffConfirm").style.display="none"; colored();'>Cancel</button>
+  </div>
+  
+  <div class="areYouSureDialog" id="ShutdownConfirm" style="z-index:90; position:absolute; display:none; border:2px solid black; left: calc(50% - 157px); top: calc(50% - 100px); width: 314px; height:200px; filter:grayscale(0%);">
+    <div class="areYouSureDialog" id="background" style="position: absolute;">
+    <div class="areYouSureDialog" style="background:#00349A; width:314px; height:47px;">
+    </div>
+    <div class="areYouSureDialog" style="background:linear-gradient(90deg, #3E63BC, #D4E3F8 40%, #D4E3F8 60%, #3E63BC); width:314px; height:3px;">
+      </div>
+    <div class="areYouSureDialog" style="background:linear-gradient(90deg, #5A7CDE, #99B7F7 60%, #99B7F7 70%, #6A89E3 100%); width:314px; height:103px;">
+      </div>
+    <div class="areYouSureDialog" style="background:#00349A; width:314px; height:47px;">
+      </div>
+    </div>
+
+    <h2 class="areYouSureDialog" style="position:absolute; color:white; margin-left:5px; ">Turn off computer</h2>
+    <img class="areYouSureDialog" draggable=false style="opacity:0.5; position:absolute; left: calc(20% - 15px); top:calc(50% - 20px);" src="StandByButton.png"><p style="position:absolute; left: calc(20% - 27.5px); top:calc(50% + 5px); color:white; opacity: 0.5;">Stand By</p></img>
+    <img class="btn areYouSureDialog" class="btn" style="position:absolute; left: calc(50% - 16px); top:calc(50% - 19px); width:32px; height:32px;" onclick='window.location.href="ShutdownScreen.html?action=shutdown"' src="ShutDown.png" draggable=false>
+    <p style="position:absolute; left: calc(50% - 31px); top:calc(50% + 5px); color:white;">Turn Off</p></img>
+    <img class="btn areYouSureDialog" class="btn" style="position:absolute; left: calc(80% - 17.5px); top:calc(50% - 21px); width:37px; height:37px;" onclick='window.location.href="ShutdownScreen.html?action=restart"' src="restart.dc491046c84e4c14e552.ico" draggable=false>
+    <p style="position:absolute; left: calc(80% - 26.5px); top:calc(50% + 5px); color:white;">Restart</p></img>
+    <button class="areYouSureDialog" style="position:absolute; width:75px; right:12.5px; bottom:12.5px;" onclick='document.querySelector("#ShutdownConfirm").style.display="none"; colored();'>Cancel</button>
+  </div>
+  
+  <div id="Column1" style="width:60px;">
+  <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("IE", 0)' shortcutNumber = 0>
+      <img draggable=false 
+ src="BubbleWindow.png" alt="Windows Icon" width="30" height="30">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;"'>Internet Explorer</span>
+  </div>
+  <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Paint", 1)' shortcutNumber = 1>
+    <img draggable=false 
+  src="Bold_and_Brash.webp" alt="Windows Icon" width="30" height="45">
+    <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;">Paint</span>
+  </div>
+  <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Notepad", 2)' shortcutNumber = 2>
+    <img draggable=false 
+  src="WriteThatDown.png" alt="Windows Icon" width="60" height="50">
+    <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;">Notepad</span>
+  </div>
+  <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Solitaire", 3)' shortcutNumber = 3>
+    <img draggable=false 
+  src="windows-xp-games-v0-mimixjd9rwnc1.webp" alt="Windows Icon" width="60" height="50">
+    <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;">Solitaire</span>
+  </div>
+  <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Minesweeper", 10)' shortcutNumber = 10>
+    <img draggable=false 
+  src="MinesweeperIcon.webp" alt="Windows Icon" width="50" height="50">
+    <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none; font-size:7px;">Minesweeper</span>
+  </div>
+    <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Pinball", 4)' shortcutNumber = 4>
+      <img draggable=false 
+    src="PinballIcon.png" alt="Windows Icon" width="50" height="50">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;">Pinball</span>
+    </div>
+    </div>
+  <div id="Column2" style="position:absolute; margin-left: 70px; width: 60px; top:0px;">
+  <div id="shortcut" style="width:60px; height:90px; position:relative; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Error", 5)' shortcutNumber = 5>
+    <img draggable=false 
+  src="XPIcon.webp" alt="Windows Icon" width="30" height="30">
+    <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;"'>My Computer</span>
+  </div>
+    <div id="shortcut" style="width:60px; height:90px; position:relative; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Error", 6)' shortcutNumber = 6>
+      <img draggable=false 
+    src="My_Music_WinXP.webp" alt="Windows Icon" width="30" height="30">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;"'>My Music</span>
+    </div>
+    <div id="shortcut" style="width:60px; height:90px; position:relative; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Error", 7)' shortcutNumber = 7>
+      <img draggable=false 
+    src="My_Pictures_WinXP.webp" alt="Windows Icon" width="30" height="30">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;"'>My Pictures</span>
+    </div>
+    <div id="shortcut" style="width:60px; height:90px; position:relative; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Error", 8)' shortcutNumber = 8>
+      <img draggable=false 
+    src="My_Documents_2001.webp" alt="Windows Icon" width="30" height="30">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none; font-size:9px;">My Documents</span>
+    </div>
+    <div id="shortcut" style="width:60px; height:90px; position:relative; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("WinAmp", 9)' shortcutNumber = 9>
+      <img draggable=false 
+    src="Winamp-logo.svg.png" alt="Windows Icon" width="30" height="30">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;">Winamp</span>
+    </div>
+    <div id="shortcut" style="width:60px; height:90px; position:relative; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Spider Solitaire", 11)' shortcutNumber = 11>
+      <img draggable=false 
+    src="Spider_Solitaire_WinXP.webp" alt="Windows Icon" width="45" height="45">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;">Spider Solitaire</span>
+    </div>
+    </div>
+  
+  <div id="christmasShortcut" style="position:absolute; left:calc(100% - 75px); top:0px; display:none; font-size: 9.5px;">
+  <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double; position:absolute;" onclick='window.location.replace("SecretBoxBSOD.html");' shortcutNumber = 99>
+    <img draggable=false 
+  src="Png-Images-Files.png" alt="Windows Icon" width="40" height="40">
+    <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;"'>Christmas Photo.png</span>
+  </div>
+  </div>
+  <div id="trashbinShortcut" style="position:absolute; left:calc(100% - 75px); bottom:30px; display:block;">
+    <div id="shortcut" style="width:60px; height:90px; border-color: rgba(0,0,255,0); border-style: double;" onclick='openWindow("Error", 100)' shortcutNumber = 100>
+      <img draggable=false 
+    src="recycle-bin-683244_1280.webp" alt="Windows Icon" width="40" height="40">
+      <span style="-webkit-user-select: none; -ms-user-select: none; user-select: none;"'>Recycle Bin</span>
+    </div>
+    </div>
+  <!--<div id="resizable" style="width: 250px; height: 150px;min-width: 250px;
+    min-height: 150px; max-width: 250px;
+    max-height: 150px;">
+    <div style="background:#FFFFF0; width: 100%; height: 100%;">
+      <img src="error.png" style="width: 100px; position: absolute; margin-left: -15px;"></img>
+      <p style="position: absolute; top: -35px; left:5px; color:black; font-size: 15px;">Error</p>
+      <p style="position: absolute; margin-left: 75px; margin-top:37.5px;">C:/<br>
+      Application not found</p>
+      <button id="okButton" onclick="this.parentElement.parentElement.remove();"style="margin-left: 80px; margin-top: 112px; width: 100px;">Ok</button>
+    </div>
+    </div>-->
+  <!--<div id="resizable" class="ui-widget-content" style="width: 25%; height: 25%; background-color: transparent;" windowIndex=0 >
+    <footer style="display:flex; flex-direction: row-reverse;">
+      <button id="close" class="ui-button ui-widget ui-corner-all ui-button-icon-only ui-button">X</button>
+      <button id="fullScreen" class="ui-button ui-widget ui-corner-all ui-button-icon-only ui-button">□</button>
+      <button id="minimize" class="ui-button ui-widget ui-corner-all ui-button-icon-only ui-button">-</button>
+    </footer>
+    <footer style="display:flex; background-color: transparent;">
+      <button id="goBack" class="ui-button ui-corner-all ui-widget">←</button>
+      <button id="goForward" class="ui-button ui-corner-all ui-widget">→</button>
+      <button id="refresh" class="ui-button ui-corner-all ui-widget">↻</button>
+      Address
+      <input type="text" style="width: 100%;"></input>
+    </footer>
+  <iframe id="window" src="https://oldgoogle.neocities.org/2009/" style="height:100%;"></iframe>
+  </div>-->
+  <div id="StartMenu" style="position:absolute; display:none; left:4px; bottom: 0px;">
+    <div class="taskBar" style="position:absolute; bottom:0px; left:-2.5px; height:400px; width:310px;border-radius: 15px;">
+      <img src="KrabbyPatty.webp" style="width:50px; height:50px; border:2px solid white; margin-left: 10px; margin-top: 7.5px;"></img>
+      <h2 style="position:absolute; color:white; margin-top:25px; margin-left: 70px;">Administrator</h2>
+    </div>
+  <div style="position: absolute; bottom: 30px; left: -2.5px; background: linear-gradient(rgb(68, 144, 230) 3%, rgb(25, 65, 165) 98%); height:25px; width: 310px; display: flex; flex-direction: row-reverse;">
+    <div style="width: 10px;"></div>
+    <h9 style="user-select:none; margin-top: 6px; color:white;">Power Off</h9>
+    <div style="width: 10px;"></div>
+    <img draggable=false class="btn" onclick='document.querySelector("#ShutdownConfirm").style.display="block"; grayscale();' src="ShutDown.png"></img>
+    <div style="width: 10px;"></div>
+    <p style="user-select:none; margin-top: 6px; color:white;">Log Off</p>
+    <div style="width: 10px;"></div>
+    <img onclick='document.querySelector("#LogOffConfirm").style.display="block"; grayscale();' draggable=false class="btn" src="Logout.png"></img>
+  </div>
+    <div style="width:150px; height:275px; position:absolute; bottom:55px; left:150px; background: rgb(211, 229, 250); border-left: 1px solid rgb(177, 193, 219);">
+      <div onclick='openWindow("Error", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="My_Documents_2001.webp" style="width:25px; height:25px;"></img>
+        <div style="flex-direction: column; display:block;">
+          <h3 style="position: relative; top:-4px; margin-left: 5px; font-size:10px">My Documents</h3>
+        </div>
+      </div>
+      
+      <div onclick='openWindow("Error", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="My_Pictures_WinXP.webp" style="width:25px; height:25px;"></img>
+        <div style="flex-direction: column; display:block;">
+          <h3 style="position: relative; top:-4px; margin-left: 5px; font-size:10px">My Pictures</h3>
+        </div>
+      </div>
+      <div onclick='openWindow("Error", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="My_Music_WinXP.webp" style="width:25px; height:25px;"></img>
+        <div style="flex-direction: column; display:block;">
+          <h3 style="position: relative; top:-4px; margin-left: 5px; font-size:10px">My Music</h3>
+        </div>
+      </div>
+      <div onclick='openWindow("Error", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="XPIcon.webp" style="width:25px; height:25px;"></img>
+        <div style="flex-direction: column; display:block;">
+          <h3 style="position: relative; top:-4px; margin-left: 5px; font-size:10px">My Computer</h3>
+        </div>
+      </div>
+      <div onclick='openWindow("About", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="Q-Mark.webp" style="width:25px; height:25px;"></img>
+        <div style="flex-direction: column; display:block;">
+          <h3 style="position: relative; top:-4px; margin-left: 5px; font-size:10px">About SpongeBob XP</h3>
+        </div>
+      </div>
+      <div onclick='window.location.replace("SpongeBobScreenSaver.html");' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="ImSpongebob.png" style="width:25px; height:25px;"></img>
+        <div style="flex-direction: column; display:block;">
+          <h3 style="position: relative; top:-4px; margin-left: 5px; font-size:10px">Screensaver</h3>
+        </div>
+      </div>
+    </div>
+    <div style="width:150px; height:275px; position:absolute; bottom:55px; left:0px; background: white;">
+      <div onclick='openWindow("IE", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:5px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="BubbleWindow.png" style="width:35px; height:35px;"></img>
+        <div style="flex-direction: column; display:block;">
+      <h3 style="position: relative; top:-9px; margin-left: 5px;">Internet</h3>
+          <h5 style="position:relative; top:-27px; margin-left:5px; color:grey;">Internet Explorer</h5>
+        </div>
+      </div>
+      <div onclick='openWindow("Error", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:-35px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="download.jpg" style="width:35px; height:35px;"></img>
+        <div style="flex-direction: column; display:block;">
+      <h3 style="position: relative; top:-9px; margin-left: 5px;">Email</h3>
+          <h5 style="position:relative; top:-27px; margin-left:5px; color:grey;">My Mailbox</h5>
+        </div>
+      </div>
+      <div onclick='openWindow("Paint", -1)' style="cursor:pointer; display:flex; margin-left: 11px; margin-top:-35px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="Bold_and_Brash.webp" style="width:23px; height:35px;"></img>
+        <div style="flex-direction: column; display:block;">
+      <h3 style="position: relative; top:-4px; margin-left: 11px;">Paint</h3>
+        </div>
+      </div>
+      <div onclick='openWindow("Notepad", -1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:0px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="WriteThatDown.png" style="width:35px; height:35px;"></img>
+        <div style="flex-direction: column; display:block;">
+      <h3 style="position: relative; top:-4px; margin-left: 5px;">Notepad</h3>
+        </div>
+      </div>
+      <div onclick='openWindow("Secret Box",-1)' style="cursor:pointer; display:flex; margin-left: 5px; margin-top:0px;" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none'">
+      <img src="images.jpg" style="width:35px; height:35px;"></img>
+        <div style="flex-direction: column; display:block;">
+      <h3 style="position: relative; top:-4px; margin-left: 5px;">Secret Box</h3>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <footer class="taskBar">
+    <img id="startbutton" draggable=false src="SpongeStart.png" alt="start" class="footer__start" onclick="menuButton()">
+    <footer class="leftItems" style="height: 100%; flex: 1 1 0%; overflow: hidden; display:flex;"></footer>
+    
+    <!--<div class="footer__window cover" windowOpen = false winSelect=0>
+      <img draggable= false src= "BubbleWindow.png" style="height: 20px; margin-right: 15px;-webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none;"></img>
+      <p1 style="-webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none;">Internet Explorer</p1>
+    </div>-->
+    <div class="footer__items right" style="width:57px;">
+      <p id="time" style="color:white; text-align: right; margin-top: 7.5px; font-weight: lighter; font-family: inherit; font-size: 11px; margin-left: -5px;">99:99 PM</p>
+    </div>
+  </footer>
+  
+  <script src="SBDesktop.js"></script>
+</body>
+

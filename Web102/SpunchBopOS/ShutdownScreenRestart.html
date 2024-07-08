@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+      @font-face { font-family: spongeboy; src: url('Spongeboytt1-0n1v.ttf'); }
+      html{
+        background-image: url("WindowsScreenTextless.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        height:100%;
+        font-family:spongeboy;
+        overflow:hidden;
+
+      }
+      #account{
+        transition: 0s;
+        border:2px solid transparent;
+      }
+      #account{
+        transition: opacity 0.5s;
+        opacity: 0.5;
+        box-sizing:border-box;
+      }
+      #account:hover{
+        transition: opacity 0.5s;
+        opacity: 1;
+        box-sizing:border-box;
+
+      }
+      #account:active{
+        transition: 0s;
+        border: double 2px transparent;
+        border-radius: 15px;
+        background-image: linear-gradient(90deg, #0A43A7, #5A7EDC 50%), radial-gradient(circle at top left, rgba(255,255,255,0.5), transparent 50%);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+
+        /*border: 10px solid;
+        border-image: linear-gradient(90deg, rgba(255,255,255,0.5), transparent 50%) 30;
+        border-radius:10px; 
+        background:linear-gradient(90deg, #0A43A7, transparent 50%);
+        box-sizing:border-box;*/
+
+      }
+    </style>
+</head>
+
+<body>
+    <img src="SpongeBobXPLogoTextless.png" style="height:150px; position:absolute; left:65%; bottom:45%;"></img>
+  <h3 id="shutText" style="color:white;text-align: start;direction: rtl;width: calc(65% + 90px);position: absolute;bottom: 39%;">...Logging off</h3>
+  <script>
+    let audio = new Audio('Shutdown.mp3');
+    audio.play();
+    setTimeout(function(){
+    document.querySelector("#shutText").textContent = "...Saving their settings"
+    }, 4000);
+    setTimeout(function(){
+document.querySelector("#shutText").textContent = "...SpongeBob XP is shutting down"
+    }, 4000+(Math.random()*500));
+
+    setTimeout(function(){
+    window.location.replace("WindowsBootAfterRecover.html");
+    }, 14500);
+  </script>
+</body>
+
+</html>

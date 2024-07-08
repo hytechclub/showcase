@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="app" style="height: 100vh">
+      <!-- Webamp will attempt to center itself within this div -->
+    </div>
+    <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+    <script>
+      const Webamp = window.Webamp;
+      const webamp = new Webamp({
+        /**
+         * Here we list three tracks. Note that the `metaData` fields and
+         * duration are required to populate the playlist.  If any of those
+         * fields are omitted, Webamp will download at least part of each file
+         * on initial page load in order to determine the missing information.
+         */
+        initialTracks: [
+          {
+            
+            metaData: {
+              title: "Heroines",
+              artist: "Diablo Swing Orchestra",
+            },
+            // NOTE: Your audio file must be served from the same domain as your HTML
+            // file, or served with permissive CORS HTTP headers:
+            // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+            url: "Just a Kid.mp3",
+            duration: 322.6122451,
+          },
+          {
+            metaData: {
+              title: "We Are Going To Eclecfunk Your Ass",
+              artist: "Eclectek",
+            },
+            // NOTE: Your audio file must be served from the same domain as your HTML
+            // file, or served with permissive CORS HTTP headers:
+            // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+            url: "https://raw.githubusercontent.com/captbaritone/webamp-music/4b556fbf/Eclectek_-_02_-_We_Are_Going_To_Eclecfunk_Your_Ass.mp3",
+            duration: 123.093061,
+          },
+        ],
+      });
+
+      // Returns a promise indicating when it's done loading.
+      webamp.renderWhenReady(document.getElementById("app"));
+    </script>
+  </body>
+</html>

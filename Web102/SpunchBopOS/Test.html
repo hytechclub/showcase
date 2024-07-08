@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  Hello world
+  <div id="winapp"></div>
+  <script src="https://unpkg.com/webamp"></script>
+  <script>
+    const Webamp = window.Webamp;
+    const webamp = new Webamp({
+      initialTracks: [
+        {
+
+          metaData: {
+            artist: "DJ Mike Llama",
+            title: "Llama Whippin' Intro",
+          },
+          url: "llama-2.91.wav",
+          duration: 5.322286,
+        },
+        {
+          metaData: {
+            artist: "Avril Lavigne",
+            title: "SpongeBob SquarePants Theme",
+          },
+          url: "SpongeBob SquarePants Theme.mp3",
+          duration: 46,
+        },
+        {
+          metaData: {
+            artist: "The Flaming Lips",
+            title: "SpongeBob and Patrick Confront the Psychic Wall of Energy",
+          },
+          url: "SpongeBob & Patrick Confront the Psychic Wall of Energy.mp3",
+          duration: 219,
+        },
+        {
+          metaData: {
+            artist: "Wilco",
+            title: "Just a Kid",
+          },
+          url: "Just a Kid.mp3",
+          duration: 171,
+        },
+        {
+          metaData: {
+            artist: "EZ Mike",
+            title: "The Goofy Goober Song",
+          },
+          url: "Goofy Goober Theme Song With Lyrics.mp3",
+          duration: 161,
+        },
+        {
+          metaData: {
+            artist: "Paul Hutson, Wordsworth",
+            title: "Prince Paul's Bubble Party",
+          },
+          url: "Prince Paul's Bubble Party.mp3",
+          duration: 149,
+        },
+        {
+          metaData: {
+            artist: "Electrocute",
+            title: "Bikini Bottom",
+          },
+          url: "Bikini Bottom.mp3",
+          duration: 220,
+        },
+        {
+          metaData: {
+            artist: "SpongeBob and the Hi-Seas",
+            title: "Best Day Ever",
+          },
+          url: "Spongebob Squarepants The Best Day Ever.mp3",
+          duration: 182,
+        },
+        {
+          metaData: {
+            artist: "The Shins",
+            title: "They'll Soon Discover",
+          },
+          url: "They'll Soon Discover.mp3",
+          duration: 205,
+        },
+        {
+          metaData: {
+            artist: "Ween",
+            title: "Ocean Man",
+          },
+          url: "Ocean Man.mp3",
+          duration: 127,
+        },
+        {
+          metaData: {
+            artist: "Patrick Star",
+            title: "Under My Rock",
+          },
+          url: "Under My Rock.mp3",
+          duration: 197,
+        },
+        {
+          metaData: {
+            artist: "SpongeBob SquarePants, Patrick Star",
+            title: "They'll Soon Discover (feat. The Monsters)",
+          },
+          url: "Now That We're Men.mp3",
+          duration: 110,
+        },
+        {
+          metaData: {
+            artist: "Tom Rothrock, Jim Wise",
+            title: "Goofy Goober Rock",
+          },
+          url: "Goofy Goober Rock.mp3",
+          duration: 155,
+        },
+        {
+          metaData: {
+              artist: "Motörhead",
+              title: "You Better Swim",
+            },
+            url: "You Better Swim.mp3",
+            duration: 314,
+          },
+          {
+            metaData: {
+              artist: "Plus-Tech Squeeze Box",
+              title: "The Jellyfish Song by the Jellyfish Band (feat. SpongeBob)",
+            },
+            url: "The Jellyfish Song by the Jellyfish Band (feat. SpongeBob).mp3",
+            duration: 75,
+          },
+          {
+            metaData: {
+              artist: "Pirates",
+              title: "SpongeBob SquarePants Theme (Movie Version)",
+            },
+            url: "SpongeBob SquarePants Theme (Movie Version).mp3",
+            duration: 61,
+          },
+        {
+          metaData: {
+            artist: "SpongeBob SquarePants",
+            title: "Employee of the Month",
+          },
+          url: "Employee of the Month.mp3",
+          duration: 214,
+        },
+      ],
+    });
+
+    // Returns a promise indicating when it's done loading.
+    webamp.renderWhenReady(document.getElementById("winApp"));
+  </script>
+
+  <iframe src="https://www.example.com" id="draggableIframe"></iframe>
+  <script src="SBIntro.js"></script>
+  <script>
+    const iframe = document.getElementById("draggableIframe");
+    iframe.draggable = true;
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS Paint Replica</title>
+<style>
+    #canvas {
+        border: 1px solid black;
+    }
+  .vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+</style>
+</head>
+<body>
+  <div id="colRow1" style="display: flex; flex-direction: row;">
+  <div style="width:30px; height:30px; background-color:black; top:0px; left:0px; text-align: center;" class="vertical-center" color="black" id="black" whiteOutline = true onclick="changeColor('black')"></div>
+  <div style="width:30px; height:30px; background-color:gray; top:0px; left:0px; text-align: center;" class="vertical-center" color="gray" id="gray" whiteOutline = false onclick="changeColor('gray')"></div>
+    <div style="width:30px; height:30px; background-color:#880015; top:0px; left:0px; text-align: center;" class="vertical-center" color="#880015" id="#880015" whiteOutline = false onclick="changeColor('#880015')"></div>
+    <div style="width:30px; height:30px; background-color:red; top:0px; left:0px; text-align: center;" class="vertical-center" color="red" id="red" whiteOutline = false onclick="changeColor('red')"></div>
+    <div style="width:30px; height:30px; background-color:orange; top:0px; left:0px; text-align: center;" class="vertical-center" color="orange" id="orange" whiteOutline = false onclick="changeColor('orange')"></div>
+    <div style="width:30px; height:30px; background-color:yellow; top:0px; left:0px; text-align: center;" class="vertical-center" color="yellow" id="yellow" whiteOutline = false onclick="changeColor('yellow')"></div>
+    <div style="width:30px; height:30px; background-color:green; top:0px; left:0px; text-align: center;" class="vertical-center" color="green" id="green" whiteOutline = false onclick="changeColor('green')"></div>
+    <div style="width:30px; height:30px; background-color:cyan; top:0px; left:0px; text-align: center;" class="vertical-center" color="cyan" id="cyan" whiteOutline = false onclick="changeColor('cyan')"></div>
+    <div style="width:30px; height:30px; background-color:blue; top:0px; left:0px; text-align: center;" class="vertical-center" color="blue" id="blue" whiteOutline = false onclick="changeColor('blue')"></div>
+    <div style="width:30px; height:30px; background-color:purple; top:0px; left:0px; text-align: center;" class="vertical-center" color="purple" id="purple" whiteOutline = false onclick="changeColor('purple')"></div>
+  </div>
+  <div id="colRow2" style="display: flex; flex-direction: row;">
+  <div style="width:30px; height:30px; background-color:white; top:0px; left:0px; text-align: center;" class="vertical-center" color="white" id="white" whiteOutline = false onclick="changeColor('white')"></div>
+  <div style="width:30px; height:30px; background-color:#C3C3C3; top:0px; left:0px; text-align: center;" class="vertical-center" color="#C3C3C3" id="#C3C3C3" whiteOutline = false onclick="changeColor('#C3C3C3')"></div>
+    <div style="width:30px; height:30px; background-color:#B97A57; top:0px; left:0px; text-align: center;" class="vertical-center" color="#B97A57" id="#B97A57" whiteOutline = false onclick="changeColor('#B97A57')"></div>
+    <div style="width:30px; height:30px; background-color:#FFAEC9; top:0px; left:0px; text-align: center;" class="vertical-center" color="#FFAEC9" id="#FFAEC9" whiteOutline = false onclick="changeColor('#FFAEC9')"></div>
+    <div style="width:30px; height:30px; background-color:#FFC90E; top:0px; left:0px; text-align: center;" class="vertical-center" color="#FFC90E" id="#FFC90E" whiteOutline = false onclick="changeColor('#FFC90E')"></div>
+    <div style="width:30px; height:30px; background-color:#EFE4B0; top:0px; left:0px; text-align: center;" class="vertical-center" color="#EFE4B0" id="#EFE4B0" whiteOutline = false onclick="changeColor('#EFE4B0')"></div>
+    <div style="width:30px; height:30px; background-color:#B5E61D; top:0px; left:0px; text-align: center;" class="vertical-center" color="#B5E61D" id="#B5E61D" whiteOutline = false onclick="changeColor('#B5E61D')"></div>
+    <div style="width:30px; height:30px; background-color:#99D9EA; top:0px; left:0px; text-align: center;" class="vertical-center" color="#99D9EA" id="#99D9EA" whiteOutline = false onclick="changeColor('#99D9EA')"></div>
+    <div style="width:30px; height:30px; background-color:#7092BE; top:0px; left:0px; text-align: center;" class="vertical-center" color="#7092BE" id="#7092BE" whiteOutline = false onclick="changeColor('#7092BE')"></div>
+    <div style="width:30px; height:30px; background-color:#C8BFE7; top:0px; left:0px; text-align: center;" class="vertical-center" color="#C8BFE7" id="#C8BFE7" whiteOutline = false onclick="changeColor('#C8BFE7')"></div>
+  </div>
+  <!--<br>
+  <br>
+  <button onclick="changeColor('black')">Black</button>
+  <button onclick="changeColor('red')">Red</button>
+  <button onclick="changeColor('blue')">Blue</button>
+  <br>-->
+  <button onclick="changeBrushSize(5)">Small</button>
+  <button onclick="changeBrushSize(10)">Medium</button>
+  <button onclick="changeBrushSize(20)">Large</button>
+  <button onclick="setBucket()">Bucket</button>
+  <br>
+  <button onclick="clearCanvas()">Clear Canvas</button>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script src="SBPaint.js"></script>
+</body>
+</html>

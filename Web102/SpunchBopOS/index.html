@@ -1,0 +1,169 @@
+<head>
+  <style>
+  #wrapper { width: 1440px; height: 1080px; padding: 0; overflow: hidden; }
+  #scaled-frame { width: 1152px; height: 864px;}
+  #scaled-frame {
+    
+      zoom: 0.83;
+      -moz-transform: scale(0.83);
+      -moz-transform-origin: 0 0;
+      -o-transform: scale(0.83);
+      -o-transform-origin: 0 0;
+      -webkit-transform: scale(0.83);
+      -webkit-transform-origin: 0 0;
+    left: calc(50% - 480px);
+    display: block;
+    border: 3px solid white;
+    /*margin-left: auto;
+     margin-right: auto;
+    padding-left: 480px;*/
+    
+  }
+    #scaled-frame-fullscreen { width: 60%; height: 80%;}
+    #scaled-frame-fullscreen {
+
+        zoom: 1.25;
+        -moz-transform: scale(1.25);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(1.25);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(1.25);
+        -webkit-transform-origin: 0 0;
+        left: 12.5%;
+      display: block;
+      border: 0px solid white;
+      /*margin-left: auto;
+       margin-right: auto;
+      padding-left: 480px;*/
+
+    }
+    body
+    {
+      background: black;
+      color: gold;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+   #scaled-frame  { zoom: 1;  }
+   #scaled-frame-fullscreen  { zoom: 1;  }
+  }
+    /*#scaled-frame {
+        transform: scale(var(5));
+        width: calc(1/var(5) * 100%);
+        height: calc(1/var(5) * 100%);
+    }*/
+
+  </style>
+  <body>
+    <div id="TextContents" style="display:block;">
+      <div style="display:flex; align-items: center; justify-content: center;">
+    <h1>OnlineXP</h1>
+      <h5 style="padding-top: 16px;">v0.6.09</h5>
+      </div>
+    <h2>A virtual machine of the beloved OS, Windows XP, for your browser. Windows XP was released in 2001 and became almost everyone's top choice until the early to mid 2010s, when the shift to Windows 7 began. Anybody, whether they had the system or not, could recognize its iconic start-up sound and grassy hill wallpaper. It wasn't until 2014 that Microsoft ended support for Windows XP, with the last update arriving in 2019, marking its end of life. Immerse yourself in the nostalgia of the 2000s, a time when life was simpler and everything seemed wonderful. We hope you enjoy our virtual machine, and remember to archive it before Microsoft takes it down.</h2>
+    <h4>PS: This virtual machine is still in its beta stage, so expect bugs, application errors, and/or crashes.</h4>
+      </div>
+    
+     <div style="width:100%; height:100%; display:flex;">
+    <iframe style="position:relative;" id="scaled-frame" src="LoadXPButton.html">   
+    </iframe>
+      <img id="fullbutton" src="images.png" style="display:block;position: absolute;width: 50px;height:50px;cursor: pointer;left: calc(50% + 500px);transform: translateY(675px);" onclick="openFullscreen()"></img>
+     </div>
+      <script>
+        // Function to check if the document is in full screen
+        let isFullscreen = false;
+        const isDocumentInFullScreen = () => {
+            return (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) !== null;
+        };
+
+        // Function to handle entering full screen
+        const onEnterFullScreen = () => {
+            isFullscreen = !isFullscreen;
+          if (isFullscreen)
+          {
+            document.querySelector("#TextContents").style.display = "none";
+            document.querySelector("#fullbutton").style.display = "none";
+            document.querySelector("#scaled-frame").setAttribute("id", "scaled-frame-fullscreen");
+            /*document.querySelector("#scaled-frame").style.height = "80%";
+            document.querySelector("#scaled-frame").style.width = "60%";
+            document.querySelector("#scaled-frame").style.border = "0px";
+            document.querySelector("#scaled-frame").style.left = "12.5%";
+            document.querySelector("#scaled-frame").style.zoom = "1.25";
+            document.querySelector("#scaled-frame").style.mozTransform = "scale(1.25)";
+            document.querySelector("#scaled-frame").style.oTransform = "scale(1.25)";
+            document.querySelector("#scaled-frame").style.webkitTransform = "scale(1.25)";*/
+          }
+          else
+          {
+            document.querySelector("#TextContents").style.display = "block";
+            document.querySelector("#fullbutton").style.display = "block";
+            document.querySelector("#scaled-frame-fullscreen").setAttribute("id", "scaled-frame");
+            /*document.querySelector("#scaled-frame").style.height = "1080px";
+            document.querySelector("#scaled-frame").style.width = "1140px";
+            document.querySelector("#scaled-frame").style.border = "3px solid white";
+            document.querySelector("#scaled-frame").style.left = "calc(50% - 360px)";
+            document.querySelector("#scaled-frame").style.zoom = "0.83";
+            document.querySelector("#scaled-frame").style.mozTransform = "scale(0.83)";
+            document.querySelector("#scaled-frame").style.oTransform = "scale(0.83)";
+            document.querySelector("#scaled-frame").style.webkitTransform = "scale(0.83)";*/
+          }
+            // Add your code to execute when the document enters full screen here
+        };
+
+        // Function to handle exiting full screen
+        const onExitFullScreen = () => {
+            console.log('Document exited full screen');
+            // Add your code to execute when the document exits full screen here
+        };
+
+        // Event listener for entering full screen
+        document.addEventListener('fullscreenchange', () => {
+            if(isDocumentInFullScreen()) {
+                onEnterFullScreen();
+            } else {
+                onExitFullScreen();
+            }
+        });
+
+        // Event listener for exiting full screen
+        document.addEventListener('webkitfullscreenchange', () => {
+            if(isDocumentInFullScreen()) {
+                onEnterFullScreen();
+            } else {
+                onExitFullScreen();
+            }
+        });
+
+        document.addEventListener('mozfullscreenchange', () => {
+            if(isDocumentInFullScreen()) {
+                onEnterFullScreen();
+            } else {
+                onExitFullScreen();
+  1          }
+        });
+
+        document.addEventListener('MSFullscreenChange', () => {
+            if(isDocumentInFullScreen()) {
+                onEnterFullScreen();
+            } else {
+                onExitFullScreen();
+            }
+        });
+
+          function openFullscreen() {
+              var elem = document.body;
+              if (elem.requestFullscreen) {
+                  elem.requestFullscreen();
+              } else if (elem.mozRequestFullScreen) { /* Firefox */
+                  elem.mozRequestFullScreen();
+              } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                  elem.webkitRequestFullscreen();
+              } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                  elem.msRequestFullscreen();
+              }
+          }
+      </script>
+     
+  </body>
+</head>

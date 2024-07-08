@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="preload" as="image" href="windowsXPWelcome.png">
+    <meta charset="utf-8">
+    <style>
+      @font-face { font-family: spongeboy; src: url('Spongeboytt1-0n1v.ttf'); }
+      body{
+        background-image: url("Windows XP Login Screen.png");
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+        font-family:spongeboy;
+        overflow:hidden;
+
+      }
+      #account{
+        transition: 0s;
+        border:2px solid transparent;
+      }
+      #account{
+        transition: opacity 0.5s;
+        opacity: 0.5;
+        box-sizing:border-box;
+      }
+      #account:hover{
+        transition: opacity 0.5s;
+        opacity: 1;
+        box-sizing:border-box;
+
+      }
+      #account:active{
+        transition: 0s;
+        border: double 2px transparent;
+        border-radius: 15px;
+        background-image: linear-gradient(90deg, #0A43A7, #5A7EDC 50%), radial-gradient(circle at top left, rgba(255,255,255,0.5), transparent 50%);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+
+        /*border: 10px solid;
+        border-image: linear-gradient(90deg, rgba(255,255,255,0.5), transparent 50%) 30;
+        border-radius:10px; 
+        background:linear-gradient(90deg, #0A43A7, transparent 50%);
+        box-sizing:border-box;*/
+
+      }
+      
+    </style>
+</head>
+
+<body>
+  <script>
+    const spongeStart = new Audio("SpongeBobXPStartup.wav");
+    const switchSound= new Audio("WindowsXpLogOffSoundEffect.wav");
+    const variables = {};
+  </script>
+  
+    <div id="account" style="width:100%; display:flex; left:calc(50% - 75px - 15.75px); height: 75px;top:calc(50% - 75px); position:absolute; cursor:pointer;" onclick='document.body.style.backgroundImage = "url(windowsXPWelcome.png)"; document.querySelector("#loadButton").style.display = "block"; document.querySelector("#loggedInText").style.display = "none"; if (variables["howEnter"] != "switchUser") {let audio = spongeStart.play();} setTimeout(function(){window.location.href = "SBDesktop.html?playSwitchAudio=" + (variables["howEnter"] == "switchUser").toString()}, variables["howEnter"] == "switchUser" ? 0 : 5000);'>
+  <img src="KrabbyPatty.webp" style=" position:absolute; width:50px; height: 50px; cursor:pointer; border-radius:5px; border:2px solid white; margin-top: 9.375px; margin-left: 15.75px;"></img>
+      <h3 style="user-select:none; position:absolute; color:white; margin-left:calc(60px + 15.75px); margin-top: calc(15px + -5px);">Administrator</h3>
+      <h6 id="loggedInText" style="user-select:none; position:absolute; color:white; margin-left:calc(60px + 15.75px); margin-top: calc(15px + +22px); color:#001671; display:none;">Logged in...</h6>
+      <h6 id="loadButton" style="user-select:none; position:absolute; color:white; margin-left:calc(60px + 15.75px); margin-top: calc(15px + +22px); color:#001671; display:none;">Loading your personal settings...</h6>
+      </div>
+  <script>
+    window.location.search.substr(1).split("&").forEach(function(variable) {
+      const temp = variable.split("=");
+      variables[temp[0]] = temp[1];
+    });
+    if(variables["howEnter"] == "switchUser")
+    {
+      switchSound.play();
+      document.querySelector("#loggedInText").style.display = "block";
+    }
+  </script>
+</body>
+
+</html>

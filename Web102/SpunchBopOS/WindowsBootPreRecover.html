@@ -1,0 +1,39 @@
+<head>
+  <style>
+    body{
+      background: black;
+    }
+    
+    img#bootimg {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+  <body>
+  <img id="bootimg" style="height:100%; image-rendering: pixelated; display: block; opacity: 0;" src="WinXPStatic.png"></img>
+    <script>
+      let currentOpacity = 0;
+      setTimeout(doOpacity,500);
+         function doOpacity()
+           {
+            currentOpacity += 1/15;
+document.getElementById("bootimg").style.opacity = currentOpacity.toString();
+             if (currentOpacity < 1)
+             {
+               setTimeout(doOpacity, 100)
+             }
+           }
+      setTimeout(function()
+                 {
+                   document.querySelector("#bootimg").setAttribute("src", "Windows_XP_Professional_bootscreen.gif");
+                 }, 1500);
+      setTimeout(function()
+       {
+         document.getElementById("bootimg").style.opacity = 0;
+         setTimeout(function()
+          {           window.location.replace("BlueScreen.html");
+          }, 5000);
+       }, 15221);
+    </script>
+  </body>
+</head>

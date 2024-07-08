@@ -1,0 +1,163 @@
+<head>
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+  <script>
+    function save()
+      {
+        if (document.querySelector("textarea").value == "FR33DOODLES")
+        {
+          window.parent.postMessage('sendDoodle', '*')
+        }
+        else
+        {
+        const textToSave = document.querySelector("textarea").value;
+        const blob = new Blob([textToSave], {type: "text/plain"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "myFile.txt";
+        a.click();
+        }
+      }
+    function newFile()
+      {
+        document.querySelector("textarea").value = "";
+      }
+    
+    function vandalizePad()
+      {
+        let stringResult = "";
+        
+        const link = "NotepadVandal"+(Math.round(Math.random()*6+1)) + ".txt";
+        fetch(link)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(data => {
+            document.querySelector("textarea").value = data;
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+        /*switch (Math.round(Math.random()*1 + 1)) {
+        case 1:
+        stringResult = `---------------------
+|  | | |    | | |   |
+|  -----    -----   |
+| |   O |  |     |  |
+| |     |  |o    |  |
+|  ----- O  -----   |
+|                   |
+|      -------      |
+|      |_| |_|      |
+|                   |
+---------------------
+|        V          |
+|________O__________|`;
+        break;
+        case 2:
+        stringResult = `   ---------------
+ /  __      __   \                                                       
+|  |  \    /  |   |
+
+|  | | \/\/ | |   |
+|   \__|  |__/    |
+|    __|  |__     |
+|___/__\__/__\____|
+|     |    |      |
+|     |    |      |`;
+        break;
+        }*/
+          document.querySelector("textarea").value = stringResult;
+        
+      }
+    function sponsor()
+      {
+    document.querySelector("textarea").value = 'SPONSOR: Type in "FR33DOODLES" and press save to get a free desktop pet from Doodles4Desktops.';
+      }
+  </script>
+  <body style="background: #EEEEEE;">
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <footer>
+    <button class="ui-button ui-widget ui-corner-all ui-button-icon-only ui-button" onclick="newFile()" style="margin:-10px;">New</button>
+    <button id="savebtn" onclick="save()" class="ui-button ui-widget ui-corner-all ui-button-icon-only ui-button" style="margin: -10px 10px;">Save</button>
+    </footer>
+    <textarea style="width:calc(100% + 18px); height: 100%; max-height:95%; margin: 10px -10px;"></textarea>
+    <script>
+      if (Math.random() < 0.625)
+        {
+      if (Math.random() < 0.25)
+      {
+        document.querySelector("textarea").value = 'SPONSOR: Type in "FR33DOODLES" and press save to get a free desktop pet from Doodles4Desktops.';
+      }
+      if (Math.random() < 0.15)
+      {
+        document.querySelector("textarea").value = `SPONSOR: Patrick's Mayonnaise and Horseradish farms. Can both be used as food and instruments.`;
+      }
+      if (Math.random() < 0.15)
+      {
+        document.querySelector("textarea").value = `Who lives in a pineapple under the sea?`;
+      }
+      if (Math.random() < 0.15)
+      {
+        document.querySelector("textarea").value = `SPONSOR: Eat at the Krusty Krab! Home of the Krabby Patty!
+        -Eugene H. Krabs`;
+      }
+      if (Math.random() < 0.15)
+      {
+        document.querySelector("textarea").value = `SPONSOR: Don't listen to that cheapskate crab! Eat at the Chum Bucket instead! It's delicious, healthy, and WAY better than the Krummy Krab!
+        -Sheldon J. Plankton`;
+      }
+      if (Math.random() < 0.15)
+      {
+        document.querySelector("textarea").value = `Remember, licking doorknobs is illegal in other planets! Dont be a criminal.`;
+      }
+          if (Math.random() < 0.15)
+          {
+            document.querySelector("textarea").value = `SPONSOR: Looking to add fulfillment to your dull, dull life? Then become part of the greatest musical sensation ever to hit Bikini Bottom and be forever adored by thousands of people you don't know. Not to mention... free refreshments! Practice begins tonight, 8:30 sharp.
+            -Squidward J. Q. Tentacles`;
+          }
+          if (Math.random() < 0.10)
+          {
+            document.querySelector("textarea").value = `SPONSOR: Hey! Hey, you! Wimpy, wimpy, wimpy! "Oh, I'm a little peanut worm." Are you too much of a wimp to work out? Are you a weakling built like a sponge? Well, now you too can have muscles with Anchor Arms! They slip on like a glove. Just add air. How big do you want 'em? Normal? Veiny?! And for the ladies... hairy. I was a wimp before Anchor Arms. Now, I'm a jerk and everybody loves me. So order now, wimp!`;
+          }
+          if (Math.random() < 0.10)
+          {
+            document.querySelector("textarea").value = `SPONSOR: New, Bran Flakes. Bold, new taste. Bran Flakes.`;
+          }
+          if (Math.random() < 0.10)
+          {
+            document.querySelector("textarea").value = `SPONSOR: X-Treme Soda! It's radical!`;
+          }
+          if (Math.random() < 0.05)
+          {
+            document.querySelector("textarea").value = `SPONSOR: Cock-a-doodle-yum! Rise and shine! We're the best restaurant in the sea, The Sea Chicken Shack! Come on down to my Sea Chicken Shack, and don't forget the kids.`;
+          }
+          if (Math.random() < 0.05)
+          {
+            document.querySelector("textarea").value = `SPONSOR: Uh-Oh! Now look what you've done, you've broke your snail's shell again, so come on down to Angry Jack's Shell Emporium! Once gone, gone for good, so I'm gonna sell sell sell, all these shell shell shells! So come on down to Angry Jack's now!`;
+          }
+          if (Math.random() < 0.05)
+          {
+            document.querySelector("textarea").value = `SPONSOR: Are you feeling tough? Then the Salty Spitoon is the right place for you! Come on down. Don't be a weenie.`;
+          }
+          if (Math.random() < 0.05)
+          {
+            document.querySelector("textarea").value = `SPONSOR: Eat the best ice cream at Goofy Goober's Ice Cream Party Boat and get a chance to meet Goofy Goober.`;
+          }
+          if (Math.random() < 0.05)
+          {
+            document.querySelector("textarea").value = `Having trouble finding the password to the secret box? Here's a hint: Try exploring around. It's hidden somewhere in one of the apps.`;
+          }
+        }
+    </script>
+  </body>
+</head>

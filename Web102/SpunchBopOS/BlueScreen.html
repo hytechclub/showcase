@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="IntroStyle.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    @font-face { font-family: Pixel; src: url('Web437_IBM_VGA_9x16.woff'); } 
+    body {
+       font-family: Pixel;
+      -webkit-font-smoothing : none;
+       color:#dfdfdf;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <script>
+    function fakeLoadingBar() {
+        const progressBarLength = 20;
+        const progressBarChar = '█';
+        const emptyChar = '-';
+        let progress = 0;
+        const h1 = document.createElement("h1");
+        h1.setAttribute("id", "loadBar")
+        h1.setAttribute("style", "font-weight: normal;");
+        document.body.appendChild(h1);
+        let textNode = document.createTextNode("IF IT DISPLAYS THIS, YOUR CODE IS PROBABLY BROKEN");
+      let progressDone = false;
+        updateBar();
+        function updateBar(){
+          let progText = '';
+              progText = '[';
+            const progressChars = Math.floor(progress / (100 / progressBarLength));
+              progText += progressBarChar.repeat(progressChars);
+              progText += emptyChar.repeat(progressBarLength - progressChars);
+              progText +='] ' + Math.floor(progress) + '%';
+            if (progress >= 100) {
+              progressDone = true;
+                const h1Again = document.createElement("h1");
+                textNode = document.createTextNode("RECOVER COMPLETE! NOW LOADING OS...");
+              h1Again.setAttribute("style", "font-weight: normal;");
+                h1Again.appendChild(textNode);
+                document.body.appendChild(h1Again);
+              setTimeout(enterOS, 2000);
+            }
+          
+            progress += Math.random()*5;
+            progress = Math.min(progress, 100);
+
+          textNode = document.createTextNode(progText);
+            h1.appendChild(textNode);
+          document.getElementById("loadBar").textContent= progText;
+
+          progText = '';
+          if (progress <= 100 && !progressDone)
+            {
+            setTimeout(updateBar, Math.random()*100*(Math.random()*10));
+            }
+        }
+    }
+
+
+    
+    function recoverFailedTextPartI()
+      {
+        const h1 = document.createElement("h1");
+        const textNode = document.createTextNode("RECOVER FAILED! LOADING EXPERIMENTAL OS BACKUP!");
+        h1.setAttribute("style", "font-weight: normal;");
+        h1.appendChild(textNode);
+        document.body.appendChild(h1);
+        setTimeout(fakeLoadingBar, 500);
+      }
+    function enterOS()
+    {
+      window.location.replace("WindowsBootAfterRecover.html");
+    }
+  const pressRecover = document.createElement("h1");
+    pressRecover.setAttribute("style","font-weight: normal;");
+  let pressedEnter = false;
+  const textNode = document.createTextNode("SYSTEM32 FILE NOT FOUND.\nPRESS ENTER TO RECOVER!");
+    pressRecover.appendChild(textNode);
+  document.body.appendChild(pressRecover);
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' && !pressedEnter) {
+        //document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+
+
+        const recoveringText = document.createElement("h1");
+        recoveringText.setAttribute("style", "font-weight: normal;");
+        const textNode = document.createTextNode("RECOVERING...");
+        recoveringText.appendChild(textNode);
+        document.body.appendChild(recoveringText);
+        pressedEnter = true;
+        setTimeout(recoverFailedTextPartI, 3000);
+        
+      }
+    });
+
+  </script>
+</body>
+
+</html>

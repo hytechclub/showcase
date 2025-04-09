@@ -1,0 +1,19 @@
+function rollD6() {
+  // random decimal number between 0 and 1
+  let randomDecimal = Math.random();
+
+  // random decimal number between 0 and 6
+  let randomDecimalRange = randomDecimal * 6;
+
+  // random integer between 0 and 5 inclusive
+  let randomIntegerFloored = Math.floor(randomDecimalRange);
+
+  // random whole number between 1 and 6 inclusive
+  let randomDiceRoll = randomIntegerFloored + 1;
+
+  // message to display
+  let message = `You rolled a ${randomDiceRoll}!`;
+
+  // display message
+  alert(message);
+}

@@ -1,0 +1,73 @@
+.container {
+  margin: 0 auto;
+  width: 75%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  font-family: sans-serif;
+}
+
+.block {
+  width: 150px;
+  height: 150px;
+  background: #676470;
+  margin-top: 15px;
+  line-height: 150px;
+  transition: all 350ms ease; /* Note: in order to keep this example code as brief as possible, I've set the properties to be transitioned to "all". In practice, however, it's best to name the specific properties being transitioned for each element instead of using the blanket "all", as it improves performance. */ 
+  font-size: 1.8em;
+  color: white;
+  text-align: center;
+}
+ /* fade: does not require transform */
+.fade {
+  opacity: 1;
+  transition: opacity 350ms ease;
+}
+
+.fade:hover {
+  opacity: 0.5;
+  color: black;
+}
+
+/* color: does not require transform */
+.color:hover {
+  background: aqua;
+  color: black;
+}
+
+/* grow: does require transform */
+.grow:hover {
+  transform: scale(1.3);
+  background-color: aqua;
+  color: black;
+  
+}
+
+/* rotate: does require transform */
+.rotate:hover {
+  transform: rotateZ(450deg);
+   background: aqua;
+  color: black;
+;
+}
+
+/* circle: does not require transform */
+.circle:hover {
+  border-radius: 50%;
+   background: aqua;
+  color: black;
+  
+}
+
+/* three: does require transform */
+.three:hover {
+  box-shadow: 5px 5px aqua, 6px 6px aqua, 7px 7px aqua;
+  transform: translateY(-5px);
+}
+
+/* border: does not require transform */
+.border:hover {
+  box-shadow: inset 0 0 0 10px aqua;
+}
+

@@ -1,0 +1,15 @@
+.input-controls {
+  padding: 5px;
+}
+
+.input-controls button {
+  margin: 5px;
+}
+
+#hyland-image {
+  border: 1px solid gray;
+  height: 400px;
+  margin: 10px;
+  margin-top: 25px;
+  opacity: 0;
+}

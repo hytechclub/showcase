@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Skranji&display=swap');
+
+body {
+  color: #16a920;
+  background: #fffc99;
+  font-family: "Concert One";
+  font-size: 2em;
+  text-align: center;
+  user-select: none;
+}
+
+h1 {
+  font-family: "Skranji";
+}
+
+#clicker {
+  width: 200px;
+  cursor: pointer;
+  transition: 300ms;
+  position: relative;
+  display: inline-block;
+}
+
+#clicker:hover {
+  transform: scale(1.29) rotate(5deg);
+  filter: brightness(120%);
+}
+
+.upgrades {
+  opacity: 0;
+  display: none;
+  transition: 300ms;
+  width: 95%;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.upgrades > div {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  border: 2px solid white;
+  background: #16a920;
+  color: white;
+  font-size: .7em;
+  transition: 300ms;
+  opacity: .5;
+  margin: 5px;
+}
+
+.upgrades > div > div > img {
+  height: 90%;
+  margin: 5px;
+  border: 1px solid white;
+}
+
+.upgrades > div > div {
+  text-align: left;
+  padding: 10px;
+}
+
+.upgrades h2, .upgrades p {
+  margin: 0;
+}
+
+.upgrades > div.buyable {
+  opacity: 1;
+}
+
+.upgrades > div.buyable:hover {
+  transform: scale(1.05);
+  filter: brightness(110%);
+  cursor: pointer;
+}
+
+.upgrades > div.bought {
+  opacity: 1;
+  border: 5px solid gold;
+  background: #128219;
+}
+
+@keyframes shake {
+  0% { transform: scale(1.29) rotate(5deg); }
+  50% { transform: scale(1.4) rotate(5deg); }
+  100% { transform: scale(1.29) rotate(5deg); }
+}

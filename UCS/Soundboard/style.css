@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Slackey&display=swap');
+
+body {
+  background: #26b9c8;
+  color: #fff56c;
+  font-size: 1.4em;
+  font-family: "Oswald";
+}
+
+h1 {
+  font-family: "Slackey";
+}
+
+button {
+  font-size: inherit;
+  font-family: inherit;
+  background: #0457a0;
+  border: 2px solid #fff56c;
+  color: #fff56c;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+img {
+  filter: brightness(150%);
+  border: 3px solid black;
+}

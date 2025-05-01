@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+
+body {
+  font-family: "Instrument Serif";
+  font-size: 1.8em;
+  background: black;
+  color: white;
+}
+
+h1 {
+  border-bottom: 1px solid white;
+}
+
+img {
+  width: 400px;
+  border: 4px solid white;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  background: white;
+}

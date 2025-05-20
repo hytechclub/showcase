@@ -1,0 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: inline;
+    overflow-y: hidden;
+}
+
+#gameboard {
+    border: solid 1px black;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.ui {
+    width: calc(29vw);
+    float: left;
+}
+
+.bucket {
+    /* background-color: orange; */
+    position: absolute; 
+    border-radius: 10px;
+    text-align: center;
+}
+
+.inline {  
+    display: inline;
+}

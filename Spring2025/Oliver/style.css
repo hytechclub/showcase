@@ -1,0 +1,23 @@
+/* stylelint-disable */
+
+body {
+ background: yellow;
+  text-align: center;
+  
+}
+#credits{
+  color: grey;
+}
+.subheading{
+  font-family: arial, sans-sherif;
+  font-size: 16px;
+  border:1px solid black;
+  padding:10px;
+  margin: 20px;
+  display:block;
+  cursor: pointer;
+  size:80%
+}
+#heading{
+  size: 90%;
+}

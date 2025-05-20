@@ -1,0 +1,38 @@
+.jumbotron {
+    background-image: url("https://dailyillini.com/wp-content/uploads/2023/08/DSC04066-2.jpg");
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+.subtitle{
+  font-style: italic;
+}
+body{
+  background: #111330;
+  color: #c9ad0c;
+  align-items: center;
+}
+table{
+  background: white;
+  color: black;
+}
+caption{
+  color: white;
+}
+.Linked{
+  color: #107594;
+}
+#concert{
+  color: #c9ad0c;
+}
+
+.btn {
+  background-color:#111330;
+  color:#c9ad0c;
+  cursor:pointer;
+  text-align: center;
+  margin: 0 auto;
+}
+#origin{
+  white-space: nowrap;
+}

@@ -1,0 +1,45 @@
+
+body {
+  height:100%;
+  text-align:center;
+  background:#6bb8ff;
+  color: #004585;
+
+}
+footer {
+  position:absolute;
+  bottom:0px;
+ 
+}
+h1 {
+  color:forestgreen;
+  text-align:center;
+}
+img {
+  height:35%;
+  width: 45%;
+}
+tr:hover {
+  background:#5288ba;
+}
+ th, td {
+
+  padding:0px;
+}
+table {
+  border-spacing:0%;
+  width: 1500px;
+    height: 500px;
+}
+p {
+  font-size:150%
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+#wr {
+  color: #07690f
+}

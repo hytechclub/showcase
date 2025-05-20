@@ -1,0 +1,46 @@
+body {
+  background-color: lavender;
+  color: darkblue;
+  font-family: Tahoma;
+}
+img {
+  height: 150px;
+}
+h1 {
+  color: dodgerblue;
+  font-family: tahoma;
+  font-size: 50px;
+}
+#subtitle {
+  font-style: italic;
+}
+#subscribe:hover {
+  box-shadow: 0px 5px 5px black;
+}
+#subscribe:active {
+  background-color: mistyrose;
+  cursor: pointer;
+  transition: 5s;
+}
+#subscribe {
+  background-color: lightpink;
+  cursor: pointer;
+  transition: 1s;
+}
+body {
+  animation: 4s infinite linear alternate pulse;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: lavenderblush;
+  }
+
+  50% {
+    background-color: lavender;
+  }
+
+  100% {
+    background-color: lightskyblue;
+  }
+}

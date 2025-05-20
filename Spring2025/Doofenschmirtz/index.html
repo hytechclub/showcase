@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <canvas id="gameboard"></canvas>
+    <span id="bucket_container"></span>
+    <div class="ui">
+        <h2 id="money_counter">Money: </h2>
+        <button onclick="spawn_plinko()">Spawn plinko</button>
+        <div id="upgrades-div"></div> <!-- gets populated by js -->
+    </div>
+
+    <script src="./upgrades.js"></script>
+    <script src="./plinko.js"></script>
+</body>
+</html>

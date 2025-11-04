@@ -29,7 +29,11 @@
         width: 100%;
         height: 100%;
         background-size: cover;
-        filter: opacity(40%);
+      }
+
+      #slides > div * {
+        position: relative;
+        z-index: auto;
       }
 
       h1,
@@ -198,6 +202,8 @@
         /* background-image: url(https://i.pinimg.com/originals/50/20/af/5020af9c53936ac7596855bc9bc3733b.gif); */
         /* background-image: url("https://i.pinimg.com/originals/ca/36/02/ca36026f0964442a8513e35caed1b820.gif"); */
         background-image: url(Assets/tv.gif);
+        
+        opacity: .3;
       }
 
       #slide-4 {
@@ -212,6 +218,7 @@
         /* background-image: url(https://64.media.tumblr.com/0e96916f16d4eb58663de979fe08ef44/tumblr_inline_nzazjyuuLK1t91gva_500.gifv); */
                 /* background-image: url(https://media.tenor.com/lJ2OMbfVD24AAAAM/spooky-spooktober.gif); */
                 /* background-image: url(https://media3.giphy.com/media/BzYCX3fU2GRoOogtkw/giphy-downsized.gif) */
+        opacity: .3;
       }
 
       #slide-5::before {
@@ -226,7 +233,6 @@
 
       #slide-7::before {
         background-image: url(Assets/pixelrobot.gif);
-        background-size: contain !important;
       }
 
       #slide-8::before {
@@ -425,7 +431,7 @@
       </div> -->
     </div>
     <script defer>
-      const timePerSlide = 15000;
+      const timePerSlide = 1500000;
       const allSlides = document.querySelectorAll("#slides > div");
       const numberOfSlides = allSlides.length;
       let playing = false;
